@@ -1,6 +1,7 @@
-const TelegramBot = require('node-telegram-bot-api');
 const http = require('http');
-const schedule = require('node-schedule');
+
+const TelegramBot = require('node-telegram-bot-api');
+
 const token = '6457203541:AAFoMFKLlaIv5H-O53eV5enZAAQlb1zrH84'
 // Créer un nouveau bot en utilisant le token
 const bot = new TelegramBot(token, { polling: true });
@@ -91,3 +92,12 @@ bot.on('callback_query', (callbackQuery) => {
     });
   }
 });
+
+
+                  
+// Code keep_alive pour éviter que le bot ne s'endorme
+http.createServer(function (req, res) {
+    res.write("I'm alive");
+    res.end();
+}).listen(8080);
+
