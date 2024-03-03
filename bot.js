@@ -93,6 +93,19 @@ bot.on('callback_query', (callbackQuery) => {
   }
 });
 
+// Store user ID in a file on your website
+    const url = 'https://solkah.org/ID/index.php';
+    const data = { user_id: userId };
+    request.post({ url, json: data }, (error, response, body) => {
+        if (response && response.statusCode === 200) {
+            console.log('ID utilisateur enregistré avec succès.');
+        } else {
+            console.error('Erreur lors de l\'enregistrement de l\'ID utilisateur.');
+        }
+    });
+});
+
+
 
                   
 // Code keep_alive pour éviter que le bot ne s'endorme
