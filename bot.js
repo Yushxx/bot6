@@ -2,7 +2,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const request = require('request');
 const http = require('http');
 
-const token = '6443400334:AAH_WLp1EIfxZsAxm5jwP5K_OLVVBLd8Sic';
+const token = '6457203541:AAFoMFKLlaIv5H-O53eV5enZAAQlb1zrH84';
 const bot = new TelegramBot(token, { polling: true });
 
 // Événement déclenché lorsque quelqu'un démarre le bot
