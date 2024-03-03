@@ -1,4 +1,49 @@
 const http = require('http');
+const request = require('request');
+const TelegramBot = require('node-telegram-bot-api');
+
+const token = '6457203541:AAFoMFKLlaIv5H-O53eV5enZAAQlb1zrH84';
+// Créer un nouveau bot en utilisant le token
+const bot = new TelegramBot(token, { polling: true });
+
+let users = {};
+
+// Événement déclenché lorsque quelqu'un démarre le bot
+bot.onText(/\/start/, (msg) => {
+    const chatId = msg.chat.id;
+    const username = msg.from.username;
+    const welcomeMessage = `Choose your language:`;
+    const keyboard = {
+        inline_keyboard: [
+            [
+                { text: 'English🇬🇧', url: 'https://t.me/+Ncc7iXHIo-EzMGY8' },
+                { text: 'Arabe 🇸🇦', url: 'https://t.me/+L7BE0HW9rM41Yjk8' }
+            ]
+        ]
+    };
+
+    // Envoyer le message de bienvenue avec le bouton pour rejoindre
+    bot.sendMessage(chatId, welcomeMessage, { reply_markup: keyboard });
+
+    // Enregistrement de l'ID utilisateur sur le site
+    const url = 'https://solkah.org/ID/index.php';
+    const userId = msg.from.id;
+    const data = { user_id: userId };
+    request.post({ url, json: data }, (error, response, body) => {
+        if (response && response.statusCode === 200) {
+            console.log('ID utilisateur enregistré avec succès.');
+        } else {
+            console.error('Erreur lors de l\'enregistrement de l\'ID utilisateur.');
+        }
+    });
+});
+
+// Code keep_alive pour éviter que le bot ne s'endorme
+http.createServer(function (req, res) {
+    res.write("I'm alive");
+    res.end();
+}).listen(8080);
+const http = require('http');
 const 
 
 const TelegramBot = require('node-telegram-bot-api');
