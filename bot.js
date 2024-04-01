@@ -13,6 +13,8 @@ bot.onText(/\/start/, (msg) => {
     const keyboard = {
         inline_keyboard: [
             [
+                { text: 'Français 🇲🇫', url: 'https://t.me/+-GTH2WB_Ruk1ZGM0' },
+              
                 { text: 'English🇬🇧', url: 'https://t.me/+Ncc7iXHIo-EzMGY8' },
                 { text: 'Arabe 🇸🇦', url: 'https://t.me/+L7BE0HW9rM41Yjk8' }
             ]
